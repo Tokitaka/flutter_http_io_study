@@ -2,11 +2,17 @@
 import 'package:dio/dio.dart';
 
 class PostRepository {
+  final dio = Dio();
 
-  /// More examples see https://github.com/cfug/dio/blob/main/example
-  void main() async {
-    final dio = Dio();
-    final response = await dio.get('https://pub.dev');
-    print(response.data);
+  void findByIdV1 (int id){
+    print("1");
+    // Response 빈박스 돌려주는 것 - return 타입이 void 여도 그냥 future 박스에 데이터를 넣어주는 개념 ?
+    Future<Response> responseFT = dio.get("https://jsonplaceholder.typicode.com/posts/$id");
+    print("1");
+    responseFT.then((value) => print(value.data));
+    print("1");// 다운이 다되면 value 에 값 들어옴
+
+    // 단위테스트
+
   }
 }
